@@ -20,9 +20,6 @@ for i in *.spec
 do
 sed  -i '1i %global debug_package %{nil}' "$i"
 sed  -i 's~python-wxpython~python-wxpython4~' "$i"
-sed  -i 's~.*BuildRequires:.*~~g;' "$i"
-sed  -i '1i BuildRequires: python-devel' "$i"
-sed  -i '1i BuildArch: noarch' "$i"
 
 done
 )

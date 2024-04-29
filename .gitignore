@@ -2,3 +2,4 @@
 *.spec
 _output_dir
 python-copr_gui*
+_multibuild
