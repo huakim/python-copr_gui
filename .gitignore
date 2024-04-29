@@ -1,4 +1,4 @@
 .osc
 *.spec
 _output_dir
-python-copr_gui
+python-copr_gui*
