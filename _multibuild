@@ -1,0 +1,4 @@
+<multibuild>
+ <package>python-copr_pyside6</package>
+ <package>python-copr_wxpython</package>
+</multibuild>

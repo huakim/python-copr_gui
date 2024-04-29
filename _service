@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm">
+    <param name="filename">copr_gui</param>
+    <param name="scm">git</param>
+    <param name="url">https://pagure.io/matrix/python-copr-wx</param>
+    <param name="revision">HEAD</param>
+    <!--param name="versionformat">@PARENT_TAG@</param-->
+    <!--param name="changesgenerate">enable</param-->
+    <param name="without-version">enable</param>
+  </service>
+  <service name="run" mode="buildtime">
+    <param name="command">source main.sh</param>
+  </service>
+  <!--service name="set_version" mode="buildtime">
+    <param name="fromfile">PKGINFO</param>
+    <param name="file">python-py2pack.spec</param>
+  </service-->
+</services>
