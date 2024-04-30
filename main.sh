@@ -4,12 +4,12 @@ then
 fi
 
 pushd *copr_gui
-for i in gui pyside6 wxpython
-do
-export spec=$i
+#for i in gui pyside6 wxpython
+#do
+#export spec=$SPEC
 . ./main.sh
-sed -i "/# SECTION test requirements/,/# \/SECTION/d; s~%{python_sitelib}/copr_${i}-%{version}.dist-info~~; s~%{python_sitelib}/copr_${i}~%{python_sitelib}/\*~;" "python-copr_${i}.spec"
-done
+sed -i "/# SECTION test requirements/,/# \/SECTION/d; s~%{python_sitelib}/copr_${i}-%{version}.dist-info~~; s~%{python_sitelib}/copr_${i}~%{python_sitelib}/\*~;" "python-copr_${spec}.spec"
+#done
 popd
 
 
