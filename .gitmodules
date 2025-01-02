@@ -1,0 +1,3 @@
+[submodule "python-copr-setup"]
+	path = st
+	url = ssh://git@pagure.io/matrix/python-copr-setup

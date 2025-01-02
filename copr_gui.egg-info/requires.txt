@@ -1,0 +1,3 @@
+copr
+bidict
+json5
