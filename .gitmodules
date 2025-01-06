@@ -1,3 +1,0 @@
-[submodule "python-copr-setup"]
-	path = st
-	url = http://pagure.io/matrix/python-copr-setup
