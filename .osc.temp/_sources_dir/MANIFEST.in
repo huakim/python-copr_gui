@@ -1,3 +1,0 @@
-include variant.txt
-include .copr/Makefile
-include st/setup.py
