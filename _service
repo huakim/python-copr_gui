@@ -6,4 +6,7 @@
     <param name="revision">HEAD</param>
     <param name="without-version">enable</param>
   </service>
+  <service name="py_build" mode="buildtime">
+    <param name="source">copr_gui</param>
+  </service>
 </services>
