@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: copr_gui
-Version: 0.0.6
-Summary: Copr package build gui tools
-Home-page: https://pagure.io/matrix/python-copr-setup
-License: GPLv3
-Requires-Dist: copr
-Requires-Dist: bidict
-Requires-Dist: json5
