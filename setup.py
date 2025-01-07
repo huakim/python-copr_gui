@@ -1,3 +1,1 @@
-import st.setup
-
-st.setup.setup()
+st/setup.py
