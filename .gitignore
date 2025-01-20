@@ -1,5 +1,7 @@
 .osc*
 *.spec
 _output_dir
-python-copr_gui*
+python-copr*
 _multibuild
+*.tar.gz
+*.egg-info
