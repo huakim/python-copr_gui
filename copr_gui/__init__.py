@@ -1,15 +1,3 @@
-#def dynamic():
-#    import importlib
-#    import os
-#    import os.path
-# Import all submodules dynamically
-#    for submodule in [f[:-3] for f in os.listdir(
-#                       os.path.join(os.path.dirname(__file__), 'static')
-#                    ) if f.endswith('.py')]:
-#        importlib.import_module(f'.static.{submodule}', __package__)
-
-#dynamic()
-
 def dynamic():
     from sys import modules
     import sys
@@ -23,7 +11,6 @@ def dynamic():
 
     dirname = join(os.path.dirname(__file__), '__dynamic')
     dynamic_names = {f[:-3] for f in os.listdir(dirname) if f.endswith('.py')}
-  #  dynamic_paths = [ join(dirname, f)+'.py' for f in dynamic_names ]
 
     class PyFile:
         def __init__(self, name):
@@ -80,12 +67,6 @@ def dynamic():
             self.module_dict = module_dict
 
         def find_spec(self, fullname, path, target=None):
-      #  if fullname in self.module_dict:
-       #     print("IMPORT + "+fullname)
-        #    dic = self.module_dict.get(fullname, None)
-        #    if dic is None:
-        #        dic = Pac(fullname)
-        #        self.module_dict[fullname] = dic
             namedict = fullname.rsplit('.', 2)
             if len(namedict) != 3:
                 return None
@@ -93,29 +74,13 @@ def dynamic():
                 return None
             if namedict[2] not in dynamic_names:
                 return None
-
             spec = importlib.util.spec_from_loader(fullname, custom_loader)
-
-            #if dic.is_package:
-            #    loader.exec_module(importlib.util.module_from_spec(spec))
-
-            #if callable(dic):
-             #   dic()
-
             return spec
 
     module_dict = dict()
 
-# Add an instance of CustomModuleFinder to sys.meta_path
     sys.meta_path.append(CustomModuleFinder(module_dict))
 
-   # class impDynMode(name):
-    #    def __init__(self, generic_mod, dynamic_mod):
-     #       dyname = dynamic +'.'+ name
-      #      name =  generic +'.'+ name
-       #     gen = import_module( name )
-
-        #    module_dict[]
 
 dynamic()
 del dynamic

@@ -5,3 +5,4 @@ python-copr*
 _multibuild
 *.tar.gz
 *.egg-info
+**/__pycache__/

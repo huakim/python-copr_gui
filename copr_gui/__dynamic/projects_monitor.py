@@ -1,4 +1,3 @@
-#!/bin/python3
 from .monitor import DateTimePath as T, SafePath as S, MergePath as M, ItemPath as I, IfPath as C, DefPath as D, ItemStore, MonitorCommon
 from . import uistatusbar
 from .monitor import ContextCommon

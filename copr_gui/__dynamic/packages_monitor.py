@@ -1,11 +1,3 @@
-#!/usr/bin/python3
-
-'''
-
-
-i have the following code.
-```
-#'''
 from .monitor import SafePath as S, MergePath as M, ItemPath as I, IfPath as C, DefPath as D, DateTimePath as T, ItemStore, MonitorCommon
 from .monitor import ContextCommon
 from ...static.package_settings import getPackageFields

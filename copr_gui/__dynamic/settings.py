@@ -1,12 +1,3 @@
-#!/usr/bin/python3
-'''
-
-
-i have this code. can you add your data picker and time picker types here?
-
-```
-#'''
-
 from bidict import bidict
 from collections import OrderedDict
 from collections.abc import Iterable
@@ -31,12 +22,10 @@ def createFunc(self, func):
 
 class SettingsPanel(uisettings.UiSettingsPanel):
     def deploy_settings(self, settings):
-    #
         widgets = self.fields_widgets
         fields = self.fields
         field_indexes = self.indexes
         aliases = self.aliases
- #     \
         for key in settings:
             namekey = aliases.get(key) or key
             index = field_indexes.get(namekey, -1)
@@ -168,7 +157,6 @@ class SettingsPanel(uisettings.UiSettingsPanel):
 
         scrolled_window = panel_class(self)
         self.scrolled_window = scrolled_window
-      #  scrolled_window.SetScrollRate(10, 10)  # Set scrolling speed
         self.startInit()
 
         for index, field in enumerate(fields):
@@ -277,15 +265,7 @@ class SettingsPanel(uisettings.UiSettingsPanel):
                             elif callable(func):
                                 checkboxes_sizer.bind(checkbox, func)
                             checkboxes[valuename] = checkbox
-                        #form_sizer.Add(checkboxes_sizer, 0, wx.ALL, field_padding)
         self.Init()
-
-
-     #   event = RefreshedEvent()
-     #   event.SetData("Custom Event Data")
-     #   self.scrolled_window.GetEventHandler().ProcessEvent(event)
-
-
 
 def runSettingsPanel(fields=[], title='', type=SettingsPanel, parent=None):
     frame = uistatusbar.Frame(parent, title=title)
@@ -361,9 +341,6 @@ if __name__ == '__main__':
         'subfield_5': BooleanDict({'one':True, 'two':False}, True)})
 
     print(panel.fields_widgets['super_button'])
-
     panel.bindButton(panel.fields_widgets['super_button'], lambda *a: print(panel.extract_settings()))
-
     frame.Show()
-
     uistatusbar.InitApp(app)

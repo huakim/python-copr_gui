@@ -2,7 +2,6 @@ from copr.v3 import Client
 from .uimonitor import MonitorFrame, ContextMenu
 create_config = Client.create_from_config_file
 import threading
-#import wx
 from . import uistatusbar
 from .settings import runSettingsPanel
 from ...static.spec_types import AttrPath, SafePath, DefPath, IfPath, ItemPath, DateTimePath, MergePath, CallableDict
@@ -106,11 +105,8 @@ class ItemStore:
         return obj
 
 class MonitorCommon(MonitorFrame):
-    def __init__(self, parents, buttons, columns, editable=True, 
-            **kwargs):
-     #   title=self.get_title()
+    def __init__(self, parents, buttons, columns, editable=True, **kwargs):
         array = ['Filter', 'Update']
-      #  self.custom_filter=custom_filter
         self.__data = {}
         if editable:
             array += ['Add', 'Drop']
@@ -152,11 +148,10 @@ class MonitorCommon(MonitorFrame):
         count = len(items)
         if count:
             answer = uistatusbar.question(f'Are you sure (drop {count} items)?', 'Question', self)
-            if answer:# == wx.ID_YES:
+            if answer:
                 self.model.DropItems(items)
                 uistatusbar.execute_with_progress(self.drop_items(items), count, 'dropping', 'Drop package')
     
-     #   self.run_drop()
     def drop_items(self, items):
         for i in items:
             self.drop_one(i.object)
@@ -181,7 +176,6 @@ class MonitorCommon(MonitorFrame):
         self.SetTitle(self.get_title())   
     
     def add_action(self, default):
-        #default = self.add_default_values()
         frame = self.add_settings()
         frame = runSettingsPanel(frame, title=self.add_package_title(), parent=self)
         panel = frame.panel
@@ -227,12 +221,10 @@ class MonitorCommon(MonitorFrame):
         self.update_run_thread()
 
     def update_run_thread(self):
-        # Create a new thread to run the update in the background
         thread = threading.Thread(target=self.update_background)
         thread.start()
         
     def update_background(self):
-        # Run the update logic here
         list = self.get_element_list()
         self.clear()
         self.chroots = None
@@ -254,16 +246,7 @@ class MonitorCommon(MonitorFrame):
             filter_args = None
         if not filter_args is None:
             panel.deploy_settings({'':filter_args})
-
         frame.Show()
-
- #   def create_filter(self, dictionary):
- #       store = self.store
- #       model = self.model
- #       types = model.column_types
- #       path = store.path
- #       ids = model.column_ids
- #       return create_filter(dictionary, types, ids, path)
 
     def __getattr__(self, name):
         if name == 'filter_data' or name == 'create_filter':
@@ -283,14 +266,10 @@ class MonitorCommon(MonitorFrame):
         types = model.column_types
         names = model.column_names
         data = []
-    #    dictionary = {}
-    #    print(types)
-    #    print(model.columns)
         for i in range(1,len(types)):
             name = names[i]
             nick = ids[i]
             type = types[i]
-    #        dictionary[nick] = type
             if type == 'str':
                 field = [{'type': 'combobox', 
                     'name': 'Filter Type', 'id': 'filter_type', 
@@ -329,16 +308,10 @@ class MonitorCommon(MonitorFrame):
             'name': '', 'type': 'combined', 'values': data},
             {'name': 'Save', 'type': 'button', 'func': 
                 lambda frame, event, self=self: self.run_filter_data(frame, event)}]
-     #   return data
-      #  path = store.path[1:]
+
     def run_filter_data(self, frame, event):
         settings = frame.extract_settings()['']
-      #  custom_filter = self.custom_filter
-    #    print(settings)
-      #  if custom_filter is None:
         self.filter = settings
-       # else:
-       #     self.filter = lambda item: settings(item) and custom_filter(item)
         self.update_filter()
     
     def update_filter(self):
@@ -348,7 +321,6 @@ class MonitorCommon(MonitorFrame):
         for i in store.all.values():
             try:
                 filter = self.filter
-           #     print(filter)
                 if not filter(i.object):
                     continue
             except AttributeError:
@@ -360,8 +332,6 @@ class MonitorCommon(MonitorFrame):
         for i in jsons:
             store.addItem(store.newItem(i))
         self.update_filter()
-
-#create_config('/home/lenovo/.config/copr')
 
 if __name__ == '__main__':
     from uimonitor import MonitorFrame

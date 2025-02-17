@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import sys
 from copr import v3
 import argparse
@@ -36,7 +35,7 @@ def run_Project_Chroots(config, ownername, projectname):
 def run_Build_Chroots(config, build):
     return run(BuildChrootsMonitor, config, build)
 
-def main(args=None, default_icon=''):
+def startcli(args=None, default_icon=''):
     # Create the top-level parser
     parser = argparse.ArgumentParser(prog='launcher', description='Command line launcher with tree subcommands')
     parser.add_argument('--iconpath', default=default_icon, help='Icon path')
@@ -101,7 +100,13 @@ def main(args=None, default_icon=''):
             print('you forgot to provide right path to icon')
         frame.Show()
         wx.InitApp(frame.app)
-        
+
+def main(*args, **kwargs):
+    try:
+        startcli(*args, **kwargs)
+    except Exception as e:
+        wx.show_error(e)
+
 def __test():
     main()
 

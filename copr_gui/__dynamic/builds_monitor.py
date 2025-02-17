@@ -13,10 +13,8 @@ class ContextBuildsMenu(ContextCommon):
         
     def on_clone_option(self, event):
         obj = self.obj.object
-    #    print(obj)
         parent = self.parent
         vals = BuildChrootsMonitor.add_default_values(parent, obj)
-     #   print(vals)
         parent.add_action(vals)
 
     def show_json_title(self):
@@ -65,7 +63,6 @@ class BuildsMonitor(MonitorCommon):
     def add(self, package):
         owner = self.owner
         project = self.project
-  #      print(package)
         package = [i for i in package if ( 
             i['ownername'] == owner and 
             i['projectname'] == project) ]
@@ -109,7 +106,6 @@ class BuildsMonitor(MonitorCommon):
     
     def add_build(self, settings):
         client = self.client
-        #self.add(create_new_build(client, settings))
         chroots = settings['chroots'].true()
         settings['chroots'] = chroots
         try:
@@ -230,9 +226,7 @@ class BuildChrootsMonitor(BuildsMonitor):
         b = build or self.build
         b = b or {}
         b = b.get('source_package') or {}
-      #
         b = b.get('url') or None
-      #
         d = BuildsMonitor.add_default_values(self)
         if not b is None:
             d['source_type'] = 'urls'
