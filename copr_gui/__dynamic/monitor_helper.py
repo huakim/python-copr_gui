@@ -37,16 +37,16 @@ build_methods = {
 
 def create_new_build(client, settings):
     settings = settings.copy()
-    
+
     source = settings.pop('source_dict')
     source_type = settings.pop('source_type')
-    
+
     for i in ['ownername', 'projectname', 'project_dirname']:
         source[i] = settings.pop(i)
 
     return build_methods[source_type](client,
         source_type, buildopts=settings, **source)
-    
+
 
 def create_build_from_package(client, settings, package):
 

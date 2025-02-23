@@ -95,6 +95,7 @@ class PackagesMonitor(MonitorCommon):
         return {'bootstrap': 'default', 
             'ownername': self.owner, 
             'projectname': self.project,
+            'timeout': '36000',
             'chroots': default_true,
             'packages': default_true}
 
