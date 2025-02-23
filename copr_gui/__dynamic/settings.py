@@ -51,13 +51,13 @@ class SettingsPanel(uisettings.UiSettingsPanel):
             elif type == 'combobox':
                 indexes = widget['-indexes']
                 combobox = widget['-combobox']
-                self.SetComboBoxSelection(combobox, indexes[value])
+                self.SetComboBoxSelection(combobox, indexes.get(value, 0))
             elif type == 'panel':
                 items = widget['-items']
                 name = value.name()
                 indexes = widget['-indexes']
                 notebook = widget['-notebook']
-                index = indexes.inverse[name]
+                index = indexes.inverse.get(name, 0)
                 self.SetTabWidgetSelection(notebook, index)
                 items[index].deploy_settings(value)
             elif type == 'combined':
