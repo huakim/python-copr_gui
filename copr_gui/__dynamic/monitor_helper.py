@@ -88,10 +88,10 @@ def create_filter(obj_dict, type_array, id_array, path_array):
                     less = (status == 'skip')
                     if enable['timedate_from']:
                         datetime_from = combine(obj['date_from'], obj['time_from'])
-                        funcs.append(date_matcher(date, less))
+                        funcs.append(date_matcher(datetime_from, less))
                     if enable['timedate_to']:
                         datetime_to = combine(obj['date_to'], obj['time_to'])
-                        funcs.append(date_matcher(date, not less))                
+                        funcs.append(date_matcher(datetime_to, not less))
                     if len(funcs) > 0:
                         if len(funcs) == 1:
                             func = funcs[0]
