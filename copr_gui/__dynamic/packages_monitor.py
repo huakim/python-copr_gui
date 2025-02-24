@@ -145,7 +145,8 @@ class PackagesMonitor(MonitorCommon):
      #   def get_build(dct, name):
      #       u= dct['builds']
      #       return u['latest_succeeded'] 
-        get=M( I('builds'), C( I('latest_succeeded'), I('latest') ) )     
+  #      get=M( I('builds'), C( I('latest_succeeded'), I('latest') ) )
+        get=M( I('builds'), I('latest') )
         version = S(C(M( get, I('source_package'), I('version') ), none), none) 
         date = T(S(C(M( get, I('ended_on') ), zero), zero) )
         status = S(C(M( get, I('state') ), none), none)
