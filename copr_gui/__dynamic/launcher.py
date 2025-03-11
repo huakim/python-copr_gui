@@ -105,7 +105,7 @@ def main(*args, **kwargs):
     try:
         startcli(*args, **kwargs)
     except Exception as e:
-        wx.error(str(e), type(e).__name__, parent)
+        wx.error(str(e), type(e).__name__)
 
 def __test():
     main()
