@@ -157,7 +157,6 @@ class BuildsMonitor(MonitorCommon):
             proxy.cancel(item)
         except Exception:
             pass
-        print(item)
         return proxy.delete_list([item])
     
     def __init__(self, parent, config_args, filter_args=None,**kwargs):
