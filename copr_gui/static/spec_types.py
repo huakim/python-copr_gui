@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import datetime
+fromtimestamp = datetime.datetime.fromtimestamp
 
 class MergePath:
     def __init__(self, *attrs):
@@ -21,8 +23,6 @@ class MergePath:
         g=[i for i in self.__path]
         return f'MergePath(*{g})'
             
-import datetime
-fromtimestamp = datetime.datetime.fromtimestamp
 
 class DateTimePath:
     def __init__(self, func):

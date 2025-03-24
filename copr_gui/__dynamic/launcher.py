@@ -2,7 +2,7 @@ import sys
 from copr import v3
 import argparse
 import os
-
+from copr.v3 import Client
 from . import uistatusbar as wx
 from .monitor_helper import run_monitor as runMonitor
 from .packages_monitor import PackagesMonitor
@@ -14,7 +14,6 @@ DEFAULT_CONFIG = os.path.expanduser("~/.config/copr")
 
 def run(function, configfile, *args):
     app = wx.CreateApp()
-    from copr.v3 import Client
     client = Client.create_from_config_file(configfile)
     frame = function(None, (client, *args))
     frame.app = app

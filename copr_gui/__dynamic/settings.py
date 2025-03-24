@@ -6,14 +6,14 @@ from ...static.spec_types import NamedDict, BooleanDict, getName, getId, getFunc
 from . import uisettings
 from . import uistatusbar
 
+import datetime
+
 SettingsScrolledWindow=uisettings.SettingsScrolledWindow
 time_blttowx = uistatusbar.time_to_wx_datetime
 date_blttowx = uistatusbar.date_to_wx_datetime
 time_wxtoblt = uistatusbar.wx_datetime_to_time
 date_wxtoblt = uistatusbar.wx_datetime_to_date
 
-
-import datetime
 
 def createFunc(self, func):
     def _(event):

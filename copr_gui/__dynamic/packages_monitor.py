@@ -51,7 +51,7 @@ class PackagesMonitor(MonitorCommon):
         self.project = project
         
     def get_element_list(self):
-        pkgs = self.client.package_proxy.get_list(self.owner, self.project, with_latest_build=True, with_latest_succeeded_build=True)
+        pkgs = self.client.package_proxy.get_list(self.owner, self.project, with_latest_build=True, with_latest_succeeded_build=False)
         return pkgs
 
     def button_build_clicked(self, event):
