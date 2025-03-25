@@ -202,10 +202,18 @@ class MonitorCommon(MonitorFrame):
         self.run_add(st)
         frame.Close()
 
+    def cached_client(self):
+        try:
+            return self.__cached_client
+        except AttributeError:
+            cc = self.client.cached()
+            self.__cached_client = cc
+            return cc
+
     def get_project_json(self):
         obj = self.projectjson
         if obj is None:
-            client = self.client
+            client = self.cached_client()
             owner = self.owner
             project = self.project
             try:

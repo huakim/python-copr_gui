@@ -57,7 +57,7 @@ class ContextPackagesMenu(ContextCommon):
 class PackagesMonitor(MonitorCommon):
 
     def refresh_object(self, obj):
-        client = self.client
+        client = self.cached_client()
 
         def build(obj):
             build = client.package_proxy.get(
@@ -75,7 +75,7 @@ class PackagesMonitor(MonitorCommon):
         self.project = project
 
     def get_element_list(self):
-        pkgs = self.client.package_proxy.get_list(
+        pkgs = self.cached_client().package_proxy.get_list(
             self.owner,
             self.project,
             with_latest_build=True,

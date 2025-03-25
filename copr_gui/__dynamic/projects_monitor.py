@@ -57,7 +57,7 @@ class ProjectsMonitor(MonitorCommon):
             self.PopupMenu(context_menu)
 
     def refresh_object(self, obj):
-        client = self.client
+        client = self.cached_client()
 
         def build(obj):
             build = client.project_proxy.get(obj["ownername"], obj["name"])
@@ -112,7 +112,7 @@ class ProjectsMonitor(MonitorCommon):
             uistatusbar.error(str(e), "Error when edit", self)
 
     def get_element_list(self):
-        return self.client.project_proxy.get_list(self.owner)
+        return self.cached_client().project_proxy.get_list(self.owner)
 
     def __init__(self, parent, config_args, filter_args=None, **kwargs):
         MonitorCommon.__init__(

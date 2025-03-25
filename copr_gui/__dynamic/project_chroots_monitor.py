@@ -38,7 +38,7 @@ class ProjectChrootsMonitor(MonitorCommon):
             self.PopupMenu(context_menu)
 
     def refresh_object(self, obj):
-        client = self.client
+        client = self.cached_client()
 
         def build(obj):
             build = client.project_chroot_proxy.get(
@@ -83,7 +83,7 @@ class ProjectChrootsMonitor(MonitorCommon):
         chroots = self.get_chroots()
         owner = self.owner
         project = self.project
-        proxy = self.client.project_chroot_proxy
+        proxy = self.cached_client().project_chroot_proxy
         get = proxy.get
 
         #   get_build = proxy.get_build_config
