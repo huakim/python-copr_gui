@@ -141,7 +141,7 @@ class BuildsMonitor(MonitorCommon):
         )
 
     def get_element_list(self):
-        ret = self.client.build_proxy.get_list(self.owner, self.project)
+        ret = self.cached_client().build_proxy.get_list(self.owner, self.project)
         return ret
 
     def button_stop_clicked(self, event, items=None):
@@ -213,7 +213,7 @@ class BuildsMonitor(MonitorCommon):
 class BuildChrootsMonitor(BuildsMonitor):
 
     def refresh_object(self, obj):
-        client = self.client
+        client = self.cached_client()
 
         def build(obj):
             build = client.build_chroot_proxy.get(
