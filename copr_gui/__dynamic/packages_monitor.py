@@ -1,14 +1,11 @@
-from .monitor import (
+from ...static.spec_types import (
     SafePath,
     MergePath,
     ItemPath,
     IfPath,
     DefPath,
-    DateTimePath,
-    ItemStore,
-    MonitorCommon,
-)
-from .monitor import ContextCommon
+    DateTimePath)
+from .monitor import ItemStore, MonitorCommon, ContextCommon
 from ...static.package_settings import getPackageFields
 from ...static.old_build_settings import getOldBuildFields
 from . import uistatusbar

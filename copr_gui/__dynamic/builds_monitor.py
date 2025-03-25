@@ -1,12 +1,11 @@
-from .monitor import (
+from ...static.spec_types import (
     DateTimePath,
     SafePath,
     ItemPath,
     IfPath,
-    DefPath,
-    ItemStore,
-    MonitorCommon,
-)  # , MergePath as M
+    DefPath)
+
+from .monitor import ItemStore, MonitorCommon
 from . import uistatusbar
 from ...static.spec_types import default_true
 from ...static.new_build_settings import getNewBuildFields

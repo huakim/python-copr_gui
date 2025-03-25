@@ -5,11 +5,11 @@ def dynamic():
     import importlib.abc
     import importlib
 
-    # from importlib import import_module
-    # from importlib.util import spec_from_file_location, module_from_spec
+    from importlib import import_module
+    from importlib.util import spec_from_loader
     join = os.path.join
     generic = __package__ + '.generic'
-    # dynamic = __package__ + '.dynamic'
+#    dynamic = __package__ + '.dynamic'
 
     dirname = join(os.path.dirname(__file__), "__dynamic")
     dynamic_names = {f[:-3] for f in os.listdir(dirname) if f.endswith(".py")}
@@ -76,7 +76,7 @@ def dynamic():
                 return None
             if namedict[2] not in dynamic_names:
                 return None
-            spec = importlib.util.spec_from_loader(fullname, custom_loader)
+            spec = spec_from_loader(fullname, custom_loader)
             return spec
 
     module_dict = dict()

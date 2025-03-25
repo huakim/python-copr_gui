@@ -22,6 +22,22 @@ def test_simple_cache():
     assert t1 == t2
     t2 = mock2()
     assert t1 != t2
+    
+
+def test_redefined_cache():
+    cc = ComplicatedCache()
+    cache = cs.CallCache()
+    mock1 = cs.CallCacheMock(cc, cache)
+    mock2 = cs.CallCacheMock(cc, cache)
+    t1 = mock1.get_time()
+    sleep(0.1)
+    t2 = mock2.get_time()
+    assert t1 == t2
+    mock1.get_time = time
+    t1 = mock1.get_time()
+    sleep(0.1)
+    t2 = mock2.get_time()
+    assert t1 != t2
 
 
 def test_complicated_cache():
@@ -38,3 +54,4 @@ def test_complicated_cache():
     assert t1 != t2
     t1 = mock3.c1.get_time()
     assert t1 == t2
+

@@ -1,5 +1,5 @@
 from copr import v3
-from cached_store import CallCacheMock, CallCache
+from .cached_store import CallCacheMock, CallCache
 
 
 class CachedClient:

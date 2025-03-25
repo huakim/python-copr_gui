@@ -1,13 +1,12 @@
-from .monitor import (
+from ...static.spec_types import (
     #  DateTimePath as T,
     SafePath,
     #  MergePath as M,
     ItemPath,
     IfPath,
-    DefPath,
-    ItemStore,
-    MonitorCommon,
-)
+    DefPath)
+
+from .monitor import ItemStore, MonitorCommon
 from . import uistatusbar
 from .uimonitor import ContextMenu
 from .monitor_helper import show_json  # , run_monitor
