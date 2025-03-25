@@ -1,20 +1,27 @@
 def _():
     def get_if_str(obj, name):
-        l = obj[name]
-        if isinstance(l, str):
-            l = eval(l)
-        return l
+        obj_value = obj[name]
+        if isinstance(obj_value, str):
+            obj_value = eval(obj_value)
+        return obj_value
+
     def text(id, **kwargs):
-        return {'id': id, 'type': 'text', **kwargs}
+        return {"id": id, "type": "text", **kwargs}
+
     def line(id, **kwargs):
-        return {'id': id, 'type': 'line', **kwargs}
-    int=line
+        return {"id": id, "type": "line", **kwargs}
+
+    int = line
+
     def list(id, **kwargs):
-        return {'id': id, 'type': 'list', **kwargs}
+        return {"id": id, "type": "list", **kwargs}
+
     def bool(id, **kwargs):
-        return {'id': id, 'type': 'checkbox', **kwargs}
+        return {"id": id, "type": "checkbox", **kwargs}
+
     def combo(id, *types, **kwargs):
-        return {'id': id, 'type': 'combobox', 'values': types, **kwargs}
+        return {"id": id, "type": "combobox", "values": types, **kwargs}
+
     """ :param str ownername:
         :param str projectname:
         :param list chroots:
@@ -39,33 +46,35 @@ def _():
         :param str runtime_dependencies: List of external repositories (== dependencies, specified as baseurls) that will be automatically enabled together with this project repository.
         :param list packit_forge_projects_allowed: List of forge projects that will be allowed to build in the project via Packit"""
     return [
-line("ownername") ,
-line("projectname", aliases=['name']) ,
-list("chroots", aliases=['chroot_repos']) ,
-text("description") ,
-text("instructions") ,
-text("homepage") ,
-text("contact") ,
-list("additional_repos") ,
-bool("unlisted_on_hp") ,
-bool("enable_net") ,
-bool("auto_prune") ,
-bool("use_bootstrap_container") ,
-bool("devel_mode") ,
-int("delete_after_days") ,
-bool("module_hotfixes") ,
-combo("bootstrap", 'default', 'on', 'off', 'image') ,
-combo("isolation", 'default', 'simple', 'nspawn') ,
-bool("follow_fedora_branching") ,
-line("bootstrap_image") ,
-bool("fedora_review") ,
-bool("appstream") ,
-text("runtime_dependencies") ,
-list("packit_forge_projects_allowed", get=get_if_str) ,
-{'id': 'add', 'name': 'Edit/Add', 'type': 'button'}
+        line("ownername"),
+        line("projectname", aliases=["name"]),
+        list("chroots", aliases=["chroot_repos"]),
+        text("description"),
+        text("instructions"),
+        text("homepage"),
+        text("contact"),
+        list("additional_repos"),
+        bool("unlisted_on_hp"),
+        bool("enable_net"),
+        bool("auto_prune"),
+        bool("use_bootstrap_container"),
+        bool("devel_mode"),
+        int("delete_after_days"),
+        bool("module_hotfixes"),
+        combo("bootstrap", "default", "on", "off", "image"),
+        combo("isolation", "default", "simple", "nspawn"),
+        bool("follow_fedora_branching"),
+        line("bootstrap_image"),
+        bool("fedora_review"),
+        bool("appstream"),
+        text("runtime_dependencies"),
+        list("packit_forge_projects_allowed", get=get_if_str),
+        {"id": "add", "name": "Edit/Add", "type": "button"},
     ]
 
+
 ProjectSettings = _()
+
 
 def getProjectFields():
     return ProjectSettings

@@ -1,0 +1,1 @@
+../copr_gui/static/cached_store.py

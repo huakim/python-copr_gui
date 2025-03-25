@@ -68,7 +68,7 @@ class CallCacheMock:
 
     def __call__(self, *args, **kwargs):
         return self._cache(self.__obj, args, kwargs, self.__times)
-        
+
     def __getattr__(self, name):
         obj = self.__obj
         attr = CallCacheMock(getattr(obj, name), self._cache)
