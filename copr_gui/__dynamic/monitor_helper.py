@@ -104,29 +104,46 @@ def create_filter(obj_dict, type_array, id_array, path_array):
                         if len(funcs) == 1:
                             func = funcs[0]
                         else:
-                            func = lambda obj, func1=funcs[0], func2=funcs[1]: func1(
-                                obj
-                            ) and func2(obj)
+
+                            def func(obj, func1=funcs[0], func2=funcs[1]):
+                                return func1(obj) and func2(obj)
+
                 elif type == "str":
                     enable = obj["filter_type"]
                     if status != "skip":
                         text = str(obj["text"])
                         if enable == "substring":
-                            func = lambda obj, text=text: text in str(obj)
+
+                            def func(obj, text=text):
+                                return text in str(obj)
+
                         elif enable == "fulltext":
-                            func = lambda obj, text=text: text == str(obj)
+
+                            def func(obj, text=text):
+                                return text == str(obj)
+
                         elif enable == "regex":
-                            func = lambda obj, text=text: bool(re.match(text, str(obj)))
+
+                            def func(obj, text=text):
+                                return bool(re.match(text, str(obj)))
+
                     else:
                         text = str(obj["text"])
                         if enable == "substring":
-                            func = lambda obj, text=text: text not in str(obj)
+
+                            def func(obj, text=text):
+                                return text not in str(obj)
+
                         elif enable == "fulltext":
-                            func = lambda obj, text=text: text != str(obj)
+
+                            def func(obj, text=text):
+                                return text != str(obj)
+
                         elif enable == "regex":
-                            func = lambda obj, text=text: not bool(
-                                re.match(text, str(obj))
-                            )
+
+                            def func(obj, text=text):
+                                return not bool(re.match(text, str(obj)))
+
             else:
                 obj = None
             obj = CallableDict(obj, func)

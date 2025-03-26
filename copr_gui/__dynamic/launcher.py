@@ -40,22 +40,19 @@ def run_Build_Chroots(config, build):
 
 def startcli(args=None, default_icon=""):
     # Create the top-level parser
-    parser = argparse.ArgumentParser(prog="launcher",
-        description="Command line launcher with tree subcommands")
-    parser.add_argument("--iconpath",
-        default=default_icon, help="Icon path")
-    subparsers = parser.add_subparsers(
-        title="subcommands", dest="subcommand")
+    parser = argparse.ArgumentParser(
+        prog="launcher", description="Command line launcher with tree subcommands"
+    )
+    parser.add_argument("--iconpath", default=default_icon, help="Icon path")
+    subparsers = parser.add_subparsers(title="subcommands", dest="subcommand")
 
     # Create the 'builds' subcommand parser
     builds_parser = subparsers.add_parser("builds", help="Manage builds")
     builds_parser.add_argument(
         "--config", default=DEFAULT_CONFIG, help="Configuration file path"
     )
-    builds_parser.add_argument("--ownername",
-        required=True, help="Owner name")
-    builds_parser.add_argument("--projectname",
-        required=True, help="Project name")
+    builds_parser.add_argument("--ownername", required=True, help="Owner name")
+    builds_parser.add_argument("--projectname", required=True, help="Project name")
 
     # Create the 'builds' subcommand parser
     build_chroots_parser = subparsers.add_parser(

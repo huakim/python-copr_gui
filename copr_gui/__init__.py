@@ -5,11 +5,9 @@ def dynamic():
     import importlib.abc
     import importlib
 
-    from importlib import import_module
     from importlib.util import spec_from_loader
     join = os.path.join
     generic = __package__ + '.generic'
-#    dynamic = __package__ + '.dynamic'
 
     dirname = join(os.path.dirname(__file__), "__dynamic")
     dynamic_names = {f[:-3] for f in os.listdir(dirname) if f.endswith(".py")}

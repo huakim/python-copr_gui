@@ -4,7 +4,7 @@ from time import time, sleep
 
 
 class ComplicatedCache:
-    def get_time(self, arg=''):
+    def get_time(self, arg=""):
         return time()
 
 
@@ -44,7 +44,7 @@ def test_simple_cache():
     assert t1 == t2
     t2 = mock2()
     assert t1 != t2
-    
+
 
 def test_redefined_cache():
     cc = ComplicatedCache()
@@ -76,4 +76,3 @@ def test_complicated_cache():
     assert t1 != t2
     t1 = mock3.c1.get_time()
     assert t1 == t2
-

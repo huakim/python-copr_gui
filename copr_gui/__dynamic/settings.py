@@ -273,7 +273,10 @@ class SettingsPanel(uisettings.UiSettingsPanel):
                             funcf = getFunc(value, func)
                             if id(func) != id(funcf):
                                 if callable(funcf):
-                                    funcf = lambda event, funcf=funcf: funcf(event)
+
+                                    def funcf(event, funcf=funcf):
+                                        return funcf(event)
+
                                     checkboxes_sizer.bind(checkbox, funcf)
                             elif callable(func):
                                 checkboxes_sizer.bind(checkbox, func)

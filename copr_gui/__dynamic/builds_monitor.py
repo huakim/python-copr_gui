@@ -17,8 +17,7 @@ from .monitor import ContextCommon
 class ContextBuildsMenu(ContextCommon):
     def __init__(self, parent, obj):
         super().__init__(
-            parent, ["Show result", "Show chroots",
-            "Clone", "Stop", "Drop"], obj
+            parent, ["Show result", "Show chroots", "Clone", "Stop", "Drop"], obj
         )
 
     def on_clone_option(self, event):
@@ -39,8 +38,7 @@ class ContextBuildsMenu(ContextCommon):
     def on_show_chroots_option(self, event):
         name = self.obj[1]
         parent = self.parent
-        run_monitor(BuildChrootsMonitor, None,
-            parent.client, name, filter_args={})
+        run_monitor(BuildChrootsMonitor, None, parent.client, name, filter_args={})
 
     def on_stop_option(self, event):
         self.parent.button_stop_clicked(None, [self.obj.object["id"]])
