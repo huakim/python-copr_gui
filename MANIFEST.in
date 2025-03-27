@@ -1,2 +1,0 @@
-include variant.txt
-include .copr/Makefile
