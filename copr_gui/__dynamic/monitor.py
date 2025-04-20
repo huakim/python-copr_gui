@@ -371,6 +371,7 @@ class MonitorCommon(MonitorFrame):
             except AttributeError:
                 pass
             model.AppendRow(i)
+        model.RestoreLastSort()
 
     def add(self, jsons):
         store = self.store
